@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestor de Archivos</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Righteous" rel="stylesheet">
+</head>
+<body>
+    <script>
+        // Verifica si el usuario ha iniciado sesión
+        if (!sessionStorage.getItem('loggedIn')) {
+            // Redirige al usuario a la página de login
+            window.location.href = "index.html"; // Asegúrate de que esta sea la ruta correcta a tu página de inicio de sesión
+        }
+    </script>
+
+    <div class="logo-container">
+        <img src="img/gobierno.jpg" alt="Logo Gobierno" class="logo-gobierno">
+        <img src="img/udevipo.png" alt="Logo Udevipo" class="logo">
+    </div>
+    <header class="header">
+        <h1>Gestor de Archivos</h1>
+        <img src="img/icono.png" alt="Icono" class="icono">
+    </header>
+
+    <!-- Formulario para la subida de archivos -->
+    <form id="fileForm" enctype="multipart/form-data" method="post" action="upload.php">
+        <section class="file-upload">
+            <div class="input-group">
+                <input type="file" id="fileInput" name="files[]" multiple>
+                <button type="button" class="btn" onclick="subirArchivos(event)">Subir Archivos</button>
+            </div>
+
+            <div class="input-group">
+                <label for="buscar">Buscar:</label>
+                <input type="text" id="buscar" oninput="filtrarArchivos()" placeholder="Buscar por nombre de archivo...">
+            </div>
+
+            <nav class="btn-bar">
+                <button class="btn" id="ordenarNombre" onclick="ordenarArchivos('name')" type="button">Ordenar por Nombre</button>
+                <button class="btn" id="ordenarFecha" onclick="ordenarArchivos('date')" type="button">Ordenar por Fecha</button>
+                <button class="btn" id="ordenarTamano" onclick="ordenarArchivos('size')" type="button">Ordenar por Tamaño</button>
+            </nav>
+        </section>
+    </form>
+
+    <section class="file-list">
+        <table id="fileTable">
+            <thead>
+                <tr>
+                    <th>Nombre del Archivo</th>
+                    <th>Vista Previa</th>
+                    <th>Fecha</th>
+                    <th>Tamaño</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="fileList">
+                <!-- Archivos se mostrarán aquí -->
+            </tbody>
+        </table>
+    </section>
+
+    <div id="pagination">
+        <button id="prevPage" onclick="cambiarPagina(-1)" disabled>Anterior</button>
+        <span id="pageInfo"></span>
+        <button id="nextPage" onclick="cambiarPagina(1)">Siguiente</button>
+    </div>
+
+    <footer class="footer">
+        <div class="creditos">
+            <p>Desarrollado por <strong>Informatica William y Anderson </strong>. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

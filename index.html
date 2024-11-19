@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login - Gestor de Archivos</title>
+  <link rel="stylesheet" href="css/styles_login.css"> <!-- Enlace al archivo CSS -->
+</head>
+<body>
+  <div class="container" onclick="">
+    <div class="top"></div>
+    <div class="bottom"></div>
+    <div class="center">
+      <h2>Gestor de archivos Udevipo</h2>
+      <form id="loginForm" onsubmit="return validarLogin()">
+        <input type="email" id="email" placeholder="Correo electrónico" required>
+        <input type="password" id="password" placeholder="Contraseña" required>
+        <button type="submit">Ingresar</button>
+        <p id="error-message" class="error"></p> <!-- Mensaje de error -->
+      </form>
+    </div>
+  </div>
+
+  <script src="js/script_login.js"></script> <!-- Enlace al archivo JS -->
+</body>
+</html>
