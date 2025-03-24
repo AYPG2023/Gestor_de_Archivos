@@ -26,18 +26,18 @@ function subirArchivos(event) {
         method: 'POST',
         body: formData
     })
-    .then(response => response.json())
-    .then(data => {
-        if (data.every(item => item.success)) {
-            alert('Archivos subidos con éxito');
-            cargarArchivosDesdeServidor(); // Cargar archivos desde el servidor
-        } else {
-            alert('Error al subir archivos:\n' + data.map(item => item.message).join('\n'));
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
+        .then(response => response.json())
+        .then(data => {
+            if (data.every(item => item.success)) {
+                alert('Archivos subidos con éxito');
+                cargarArchivosDesdeServidor(); // Cargar archivos desde el servidor
+            } else {
+                alert('Error al subir archivos:\n' + data.map(item => item.message).join('\n'));
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
 
     input.value = ''; // Limpiar el input después de la subida
 }
